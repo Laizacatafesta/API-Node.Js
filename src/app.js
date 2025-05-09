@@ -14,10 +14,9 @@ const livros = [
 ]
 
 function buscaLivros(id) {
-    return livros.findIndex(livro => {
-        return livro.id === Number(id);
-    }
-    )
+    return livros.findIndex(livros => {
+        return livros.id === Number(id);
+    })
 }
 app.get("/", (req, res) => { //gerencia as rotas
     res.status(200).send("Curso de Node.Js");
@@ -30,6 +29,12 @@ app.get("/livros", (req, res) => {
 app.get("/livros/:id", (req, res) => {
     const index = buscaLivros(req.params.id);
     res.status(200).json(livros[index]);
+});
+
+app.put("/livros/:id", (req, res) => {
+    const index = buscaLivros(req.params.id);
+    livros[index].titulo = req.body.titulo;
+    res.status(200).json(livros);
 });
 
 export default app; //exporta o modulo
