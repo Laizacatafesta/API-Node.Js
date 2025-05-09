@@ -12,12 +12,24 @@ const livros = [
         titulo: "O hobbit"
     }
 ]
+
+function buscaLivros(id) {
+    return livros.findIndex(livro => {
+        return livro.id === Number(id);
+    }
+    )
+}
 app.get("/", (req, res) => { //gerencia as rotas
     res.status(200).send("Curso de Node.Js");
 });
 
 app.get("/livros", (req, res) => {
     res.status(200).json(livros);
+});
+
+app.get("/livros/:id", (req, res) => {
+    const index = buscaLivros(req.params.id);
+    res.status(200).json(livros[index]);
 });
 
 export default app; //exporta o modulo
