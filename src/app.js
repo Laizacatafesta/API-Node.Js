@@ -1,6 +1,8 @@
 import express from "express";
 
-const app = express (); //conjunto de codigo do express dentro da var app
+const app = express (); 
+app.use(express.json()); 
+
 
 const livros = [
     {
@@ -29,6 +31,11 @@ app.get("/livros", (req, res) => {
 app.get("/livros/:id", (req, res) => {
     const index = buscaLivros(req.params.id);
     res.status(200).json(livros[index]);
+});
+
+app.post("/livros", (req, res) => {
+    livros.push(req.body);
+    res.status(201).send("Livros cadastrado com sucesso!");
 });
 
 app.put("/livros/:id", (req, res) => {
