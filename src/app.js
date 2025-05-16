@@ -19,11 +19,6 @@ app.get("/", (req, res) => { //gerencia as rotas
     res.status(200).send("Conectado");
 });
 
-// app.get("/livros", async (req, res) => {
-//     const listaLivros = await livro.find({});   
-//     res.status(200).json(listaLivros);
-// });
-
 app.get("/livros/:id", (req, res) => {
     const index = buscaLivros(req.params.id);
     res.status(200).json(livro[index]);
