@@ -12,6 +12,15 @@ class LivroController {
         //Essa linha de cima assume que você já tem um modelo Mongoose chamado livro importado em algum lugar (fora do trecho que você colou).
         res.status(200).json(listaLivros);
     };
+
+    static async cadastrarLivro (req, res) {
+        try {
+            const novoLivro = await livro.create(req.body);
+            res.status(201).json({message: "Livro cadastrado com sucesso", livro: novoLivro});
+        } catch(erro) {
+            res.status(500).json({message: `${erro.message} - Falha ao cadastrar o livro.`})
+        };
+    };
 };
 
 export default LivroController;

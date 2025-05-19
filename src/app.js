@@ -25,19 +25,19 @@ app.get("/livros/:id", (req, res) => {
 });
 
 app.post("/livros", (req, res) => {
-    livros.push(req.body);
+    livro.push(req.body);
     res.status(201).send("Livros cadastrado com sucesso!");
 });
 
 app.put("/livros/:id", (req, res) => {
     const index = buscaLivros(req.params.id);
-    livros[index].titulo = req.body.titulo;
-    res.status(200).json(livros);
+    livro[index].titulo = req.body.titulo;
+    res.status(200).json(livro);
 });
 
 app.delete("/livros/:id", (req, res) => {
     const index = buscaLivros(req.params.id);
-    livros.splice(index, 1);
+    livro.splice(index, 1);
     res.status(200).send("Livros deletado com sucesso.");
 });
 

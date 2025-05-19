@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const livroSchema = new mongoose.Schema({
+const livroSchema = new mongoose.Schema({ //transforma o schema do mongoDB em js -- Assim não precisa criar querys.
     id: {type: mongoose.Schema.Types.ObjectId},
     titulo: {type:  String, required: true},
     editora: {type: String, },
