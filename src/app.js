@@ -1,6 +1,6 @@
 import express from "express";
 import conectaNaDatabase from "./config/dbConnect.js";
-import livro from "./models/Livro.js";
+import routes from "./routes/index.js";
 
 const conexao = await conectaNaDatabase();
 
@@ -13,11 +13,9 @@ conexao.once("open", () => {
 });
 
 const app = express (); 
-app.use(express.json()); 
+routes(app); //passando servidor express como parametro
+//app.use(express.json());  //Sempre que alguém mandar JSON no corpo da requisição, transforma isso num objeto JavaScript e coloca dentro do req.body para que o Express consiga entender JSON vindo do front-end.
 
-app.get("/", (req, res) => { //gerencia as rotas
-    res.status(200).send("Conectado");
-});
 
 app.get("/livros/:id", (req, res) => {
     const index = buscaLivros(req.params.id);

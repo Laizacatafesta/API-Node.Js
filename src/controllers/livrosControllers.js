@@ -1,4 +1,4 @@
-//centralizar todas as logicas que esta relacionada as acções que podem ser feitas em um livro.
+//centralizar todas as logicas que esta relacionada as ações que podem ser feitas em um livro.
 //o que as rotas vão chamar para executar as operações e o manuseio das requisições e respostas correspondentes.
 
 //Controllers contêm a lógica que responde às requisições HTTP.
@@ -15,10 +15,10 @@ class LivroController {
 
     static async cadastrarLivro (req, res) {
         try {
-            const novoLivro = await livro.create(req.body);
-            res.status(201).json({message: "Livro cadastrado com sucesso", livro: novoLivro});
+            const novoLivro = await livro.create(req.body); //Cria um novo livro com os dados que vieram do front-end e salva no banco
+            res.status(201).json({message: "Livro cadastrado com sucesso", livro: novoLivro}); //Esse novoLivro vem diretamente do MongoDB,  com os dados recém-cadastrados.
         } catch(erro) {
-            res.status(500).json({message: `${erro.message} - Falha ao cadastrar o livro.`})
+            res.status(500).json({message: `${erro.message} - Falha ao cadastrar o livro.`});
         };
     };
 };

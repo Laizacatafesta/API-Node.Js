@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const livroSchema = new mongoose.Schema({ //transforma o schema do mongoDB em js -- Assim não precisa criar querys.
+const livroSchema = new mongoose.Schema({ //transforma o schema do mongoDB em js -- Assim não precisa criar querys.coloca req.body no formato do schema
     id: {type: mongoose.Schema.Types.ObjectId},
     titulo: {type:  String, required: true},
     editora: {type: String, },
