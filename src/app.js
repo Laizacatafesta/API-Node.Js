@@ -1,10 +1,11 @@
 import express from "express";
 import conectaNaDatabase from "./config/dbConnect.js";
-import routes from "./routes/index.js";
+import routes from "./routes/index.js";//metodo para captar erro de conexão
 
-const conexao = await conectaNaDatabase();
+//o code abaixo é uma instancia da conexão
+const conexao = await conectaNaDatabase(); //usar await pq a função conectaNaDatabase é async
 
-conexao.on("error", (erro) => {
+conexao.on("error", (erro) => { 
     console.error("Erro de conexão.", erro);
 });
 
