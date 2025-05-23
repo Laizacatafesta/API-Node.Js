@@ -4,7 +4,7 @@
 //Controllers contêm a lógica que responde às requisições HTTP.
 
 import livro from  "../models/Livro.js";
-
+//manipulação dos dados abaixo
 class LivroController {
 
     static async listarLivros(req, res) {
