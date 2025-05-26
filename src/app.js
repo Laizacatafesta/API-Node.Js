@@ -17,10 +17,4 @@ const app = express ();
 routes(app); //passando servidor express como parametro
 //app.use(express.json());  //Sempre que alguém mandar JSON no corpo da requisição, transforma isso num objeto JavaScript e coloca dentro do req.body para que o Express consiga entender JSON vindo do front-end.
 
-app.delete("/livros/:id", (req, res) => {
-    const index = buscaLivros(req.params.id);
-    livro.splice(index, 1);
-    res.status(200).send("Livros deletado com sucesso.");
-});
-
 export default app; //exporta o modulo
