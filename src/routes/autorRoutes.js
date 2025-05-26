@@ -7,3 +7,4 @@ routes.get("/autor", AutorController.listaAutor);
 routes.get("/autor/:id", AutorController.listaAutor);
 routes.post("/autor", AutorController.listaAutor);
 routes.put("/autor/:id", AutorController.listaAutor);
+routes.delete("/autor/:id", AutorController.listaAutor);
