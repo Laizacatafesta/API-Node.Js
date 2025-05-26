@@ -38,6 +38,16 @@ class AutorController {
             res.status(500).json({message: `${erro.message} - Falha na atualização`});
         };
    };
+
+   static async deletarAutor(req, res) {
+        try {
+            const id = req.params.id;
+            const deletarAutor = await autor.findByIdAndDelete(id);
+            res.status(200).json({message: "Autor deletado com sucesso"});
+        } catch (erro) {
+            res.status(500).json({message:`${erro.message} - Erro ao deletar autor`});
+        };
+   };
 };
 
 export default AutorController;
