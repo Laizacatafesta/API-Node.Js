@@ -1,7 +1,7 @@
 import { autor } from "../models/Autor.js";
 
 class AutorController {
-    static async autorController(req, res) {
+    static async listarAutor(req, res) {
         try {
             const listaAutor = await autor.find({});
             res.status(200).json(listaAutor);
@@ -10,7 +10,7 @@ class AutorController {
         };
     };
 
-    static async encontrarAutorById(req, res) {
+    static async encontrarAutor(req, res) {
         try {
             const id = req.params.id;
             const autorEncontrado = await autor.findById(id);
@@ -20,7 +20,7 @@ class AutorController {
         };
     };
 
-    static async cadastrarAutorById(req, res) {
+    static async cadastrarAutor(req, res) {
         try {
             const novoAutor = await autor.create(req.body);
             res.status(200).json({message: "Autor cadastrado com sucesso!", autor: novoAutor});
