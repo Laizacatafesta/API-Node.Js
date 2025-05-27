@@ -4,6 +4,7 @@
 //Controllers contêm a lógica que responde às requisições HTTP.
 
 import livro from  "../models/Livro.js";
+import {autor } from "../models/Autor.js";
 //manipulação dos dados abaixo
 class LivroController {
 
@@ -28,9 +29,13 @@ class LivroController {
     };
 
     static async cadastrarLivro (req, res) {
+        const novoLivro = req.body;
         try {
-            const novoLivro = await livro.create(req.body); //Cria um novo livro com os dados que vieram do front-end e salva no banco
-            res.status(201).json({message: "Livro cadastrado com sucesso", livro: novoLivro}); //Esse novoLivro vem diretamente do MongoDB,  com os dados recém-cadastrados.
+            //const novoLivro = await livro.create(req.body); //Cria um novo livro com os dados que vieram do front-end e salva no banco
+            const autorEncontrado = await autor.findById(novoLivro.autor);
+            const livroCompleto = {...novoLivro, autor: { ...autorEncontrado._doc }};
+            const livroCriado = await livro.create(livroCompleto); 
+            res.status(201).json({message: "Livro cadastrado com sucesso", livro: livroCriado}); //Esse novoLivro vem diretamente do MongoDB,  com os dados recém-cadastrados.
         } catch(erro) {
             res.status(500).json({message: `${erro.message} - Falha ao cadastrar o livro.`});
         };
