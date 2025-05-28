@@ -60,6 +60,16 @@ class LivroController {
             res.status(500).json({message: `${erro.message} - Falha ao deletar o livro`});
         };
     };
+
+    static async listarLivrosPorEditora(req, res) {
+        const editora = req.query.editora;
+        try {
+            const livrosPorEditora = await livro.find({editora: editora});
+            res.status(200).json(livrosPorEditora);
+        } catch (erro) {
+            res.status(500).json({message: `${erro.message} - Falha na busca`});
+        };
+    };
 };
 
 export default LivroController;
