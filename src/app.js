@@ -10,10 +10,10 @@ conexao.on("error", (erro) => {
 });
 
 conexao.once("open", () => {
-    console.log("Conexão com o banco de dados realizada com sucesso");
+    console.log("Conexão com o banco de dados realizada com sucesso.");
 });
 
-const app = express (); 
+const app = express(); 
 routes(app); //passando servidor express como parametro
 //app.use(express.json());  //Sempre que alguém mandar JSON no corpo da requisição, transforma isso num objeto JavaScript e coloca dentro do req.body para que o Express consiga entender JSON vindo do front-end.
 
